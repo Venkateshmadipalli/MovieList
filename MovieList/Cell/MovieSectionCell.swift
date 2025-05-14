@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 protocol navigateToMoiveDeatiles:AnyObject{
     func navigateToMoiveList(moive:Movie)
     

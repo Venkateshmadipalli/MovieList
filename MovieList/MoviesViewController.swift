@@ -51,19 +51,10 @@ class MoviesViewController: UIViewController, navigateToMoiveDeatiles {
     }
     
     func navigateToMoiveList(moive: Movie) {
-        // Navigate to MovieDetailsViewController
-        // Create the MovieDetailsViewController programmatically
-            let movieDetailsVC = MovieDetailsViewController()  // Initialize MovieDetailsViewController
-            movieDetailsVC.movie = moive  // Pass the selected movie
-            
-            // Ensure you're using a Navigation Controller, otherwise you can't use pushViewController
-            if let navigationController = navigationController {
-                navigationController.pushViewController(movieDetailsVC, animated: true)
-            } else {
-                // If there's no navigation controller, present modally
-                present(movieDetailsVC, animated: true, completion: nil)
-            }
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        detailVC.movie = moive
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

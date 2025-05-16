@@ -20,9 +20,6 @@ import UIKit
 @IBDesignable
 @objcMembers
 open class FloatRatingView: UIView {
-    
-    // MARK: Properties
-    
     open weak var delegate: FloatRatingViewDelegate?
 
     /// Array of empty image views

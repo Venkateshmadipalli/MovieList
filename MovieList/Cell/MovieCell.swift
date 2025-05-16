@@ -21,4 +21,11 @@ class MovieCell: UICollectionViewCell {
             task.resume()
         }
     }
+    func configure1(with movie: GalleryDataModel) {
+                DispatchQueue.main.async {
+                    self.posterImageView.image = UIImage(data: movie.posterPath)
+                }
+            }
+      
+
 }

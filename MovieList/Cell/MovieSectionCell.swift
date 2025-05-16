@@ -7,7 +7,8 @@
 
 import UIKit
 protocol navigateToMoiveDeatiles:AnyObject{
-    func navigateToMoiveList(moive:Movie)
+    func navigateToMoiveList(moive:GalleryDataModel)
+    func navigateToMoiveList1(moive:Movie)
     
 }
 
@@ -15,6 +16,7 @@ class MovieSectionCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
 
     private var movies: [Movie] = []
+    private var Lmovies: [GalleryDataModel] = []
     weak var navigateToMoive :navigateToMoiveDeatiles?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,20 +40,39 @@ class MovieSectionCell: UITableViewCell {
         self.movies = movies
         collectionView.reloadData()
     }
+    func configure1(with movies: [GalleryDataModel]) {
+        self.Lmovies = movies
+        collectionView.reloadData()
+    }
 }
 extension MovieSectionCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        if UserDefaults.standard.bool(forKey: "Reachability"){
+            return movies.count
+        }else{
+            return Lmovies.count
+        }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        let movie = movies[indexPath.row]
-        cell.configure(with: movie)
+        if UserDefaults.standard.bool(forKey: "Reachability"){
+            let movie = movies[indexPath.row]
+            cell.configure(with: movie)
+        }else{
+            let movie = Lmovies[indexPath.row]
+            cell.configure1(with: movie)
+        }
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie = movies[indexPath.row]
-        navigateToMoive?.navigateToMoiveList(moive: selectedMovie)
+        if UserDefaults.standard.bool(forKey: "Reachability"){
+            let selectedMovie = movies[indexPath.row]
+            navigateToMoive?.navigateToMoiveList1(moive: selectedMovie)
+        }else{
+            let selectedMovie = Lmovies[indexPath.row]
+            navigateToMoive?.navigateToMoiveList(moive: selectedMovie)
+        }
     }
 }
 

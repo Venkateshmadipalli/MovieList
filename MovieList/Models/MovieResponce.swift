@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import CoreData
 struct MovieResponse: Codable {
     let results: [Movie]
 }
 struct Movie: Codable {
-    let id: Int
+    let id: Int?
     let title: String
     let posterPath: String?
     let overview: String
@@ -66,12 +67,12 @@ struct MovieCredit: Codable {
     let crew: [MovieCrew]
 }
 struct MovieCast: Codable, Identifiable {
-    let id: Int
+    let id: Int?
     let character: String
     let name: String
 }
 struct MovieCrew: Codable, Identifiable {
-    let id: Int
+    let id: Int?
     let job: String
     let name: String
 }
@@ -83,7 +84,6 @@ struct MovieVideo: Codable, Identifiable {
     let key: String
     let name: String
     let site: String
-
     var youtubeURL: URL? {
         guard site.lowercased() == "youtube" else {
             return nil

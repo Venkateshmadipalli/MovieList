@@ -14,7 +14,7 @@ protocol navigateToMoiveDeatiles:AnyObject{
 
 class MovieSectionCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
     private var movies: [Movie] = []
     private var Lmovies: [GalleryDataModel] = []
     weak var navigateToMoive :navigateToMoiveDeatiles?
@@ -22,7 +22,7 @@ class MovieSectionCell: UITableViewCell {
         super.awakeFromNib()
         setupCollectionView()
     }
-
+    
     
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()

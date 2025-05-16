@@ -28,12 +28,12 @@ class GalleryDataModel: NSObject {
     
     override init() {
         section  = ""
-         id = 0
+        id = 0
         voteAverage = 0.0
-         title = ""
-         overview  = ""
-         posterPath  = Data()
-         releaseDate  = ""
+        title = ""
+        overview  = ""
+        posterPath  = Data()
+        releaseDate  = ""
         youtube = URL(fileURLWithPath: "")
         youtube1 = URL(fileURLWithPath: "")
         youtube2 = URL(fileURLWithPath: "")

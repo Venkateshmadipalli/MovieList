@@ -14,14 +14,14 @@ class SGalleryHelper: NSObject {
     static let shared = SGalleryHelper()
     var allFiles: [NSManagedObject] = []
     private override init() { }
-   
+    
     func getAllDataFromScoops() -> [GalleryDataModel] {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return []
         }
-
+        
         let managedContext = appDelegate.persistentContainer.viewContext
-
+        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SGalleryInfo")
         do {
             allFiles = try managedContext.fetch(fetchRequest)
@@ -37,22 +37,22 @@ class SGalleryHelper: NSObject {
     }
     func saveData(galleryInfo: [String: Any])  {
         
-         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let entity = NSEntityDescription.entity(forEntityName: "SGalleryInfo",
                                                 in: managedContext)!
         
         let newGallery = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
-    
+                                         insertInto: managedContext)
+        
         newGallery.setValuesForKeys(galleryInfo)
         do {
             try managedContext.save()
-           print("saved")
+            print("saved")
         } catch {
             print("Failed saving")
         }
     }
-  
+    
 }

@@ -10,17 +10,17 @@ class MovieService {
     static let shared = MovieService()
     private let apiKey = "878c76144490b2497ec453a27c739a79"
     private let baseUrl = "https://api.themoviedb.org/3/movie"
-
+    
     func fetchMovies(endpoint: String, completion: @escaping (Result<[Movie], Error>) -> Void) {
         let urlString = "\(baseUrl)/\(endpoint)?api_key=\(apiKey)"
         guard let url = URL(string: urlString) else { return }
-
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-
+            
             guard let data = data else { return }
             do {
                 let movieResponse = try JSONDecoder().decode(MovieResponse.self, from: data)

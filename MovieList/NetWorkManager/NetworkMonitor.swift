@@ -43,7 +43,7 @@ class LoadingUtils {
     
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
-//    var imageView: UIImageView = UIImageView()
+    //    var imageView: UIImageView = UIImageView()
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     static let shared = LoadingUtils()
@@ -52,9 +52,9 @@ class LoadingUtils {
         container.frame = uiView.frame
         container.center = uiView.center
         container.backgroundColor = UIColorFromHex(rgbValue: 0xffffff, alpha: 0.3)
-//        container.backgroundColor = UIColor(hexaRGB: "#000000")?.withAlphaComponent(0.5)
+        //        container.backgroundColor = UIColor(hexaRGB: "#000000")?.withAlphaComponent(0.5)
         
-
+        
         
         loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         loadingView.center = uiView.center
@@ -62,11 +62,11 @@ class LoadingUtils {
         loadingView.backgroundColor = .lightGray
         loadingView.clipsToBounds = true
         loadingView.layer.cornerRadius = 10
-    
+        
         activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0);
         activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
         activityIndicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2);
-
+        
         loadingView.addSubview(activityIndicator)
         container.addSubview(loadingView)
         uiView.addSubview(container)

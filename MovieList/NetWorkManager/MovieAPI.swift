@@ -8,14 +8,14 @@
 import Foundation
 class MovieAPI {
     static let shared = MovieAPI()
-
+    
     private let baseAPIURL = "https://api.themoviedb.org/3"
     private let apiKey = "878c76144490b2497ec453a27c739a79" // Replace with your API key
     private let urlSession = URLSession.shared
     private let jsonDecoder = JSONDecoder()
     
     // Helper function for making API requests and decoding responses
-     func loadURLAndDecode<D: Decodable>(
+    func loadURLAndDecode<D: Decodable>(
         url: URL,
         params: [String: String]? = nil,
         completion: @escaping (Result<D, MovieError>) -> ()

@@ -22,10 +22,10 @@ class MovieCell: UICollectionViewCell {
         }
     }
     func configure1(with movie: GalleryDataModel) {
-                DispatchQueue.main.async {
-                    self.posterImageView.image = UIImage(data: movie.posterPath)
-                }
-            }
-      
-
+        DispatchQueue.main.async {
+            self.posterImageView.image = UIImage(data: movie.posterPath)
+        }
+    }
+    
+    
 }
